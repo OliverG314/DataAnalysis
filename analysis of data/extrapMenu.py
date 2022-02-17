@@ -39,17 +39,12 @@ class extrapMenu(menuWidget):
         minVal = self.minExtrapValSpinBox.value()
         maxVal = self.maxExtrapValSpinBox.value()
         
-        
         if self.sender() == self.minExtrapValSpinBox:
-            if minVal == maxVal:
-                self.minExtrapValSpinBox.setMaximum(minVal)
-            else:
-                self.parent().plotExtrapMin(minVal)
+            self.parent().plotExtrapMin(minVal)
         elif self.sender() == self.maxExtrapValSpinBox:
-            if maxVal == minVal:
-                self.maxExtrapValSpinBox.setMinimum(maxVal)
-            else:
-                self.parent().plotExtrapMax(maxVal)
+            self.parent().plotExtrapMax(maxVal)
+
+        self.activateWindow()
 
 def excepthook(e, v, t):
     return sys.__excepthook__(e, v, t)

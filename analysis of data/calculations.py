@@ -16,6 +16,8 @@ class calculations():
         Sxx = sum([self.data[0][i]**2 for i in range(n)]) - n*xBar**2
         Syy = sum([self.data[1][i]**2 for i in range(n)]) - n*yBar**2
 
+        print(Sxy, Sxx, Syy)
+
         return Sxy/sqrt(Sxx*Syy)
 
     def srcc(self):
@@ -31,8 +33,12 @@ class calculations():
         for i in range(len(x)):
             xRank.append(orderedX.index(x[i])+1)
             yRank.append(orderedY.index(y[i])+1)
+
+        print(xRank, yRank)
         
         n  = len(xRank)
         d2 = sum([(xRank[i] - yRank[i])**2 for i in range(n)])
+
+        print(n, d2)
 
         return 1 - (6*d2)/(n*(n**2 - 1))

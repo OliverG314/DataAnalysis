@@ -38,6 +38,7 @@ class main(QWidget):
 
         self.showPolReg = False
         self.showLinReg = False
+        self.showExpReg = False
 
         self.polRegOrd = 0
 
@@ -93,7 +94,6 @@ class main(QWidget):
         self.polyRegLabel = draggablePlotLabel(self, text=polyRegStr)
         
         self.polyRegLabel.setAlignment(Qt.AlignCenter)
-
         self.polyRegLabel.show()
 
         self.eq = 2
@@ -107,6 +107,13 @@ class main(QWidget):
         menu.setFixedSize(QSize(menu.minimumSize()))
 
         menu.show()
+
+    def raiseWidget(self, widget):
+        try:
+            widget.raise_()
+            widget.activateWindow()
+        except:
+            pass
 
     ##Regressions##
     def clearLines(self):
@@ -140,6 +147,13 @@ class main(QWidget):
 
         self.showPolReg = 2
         self.polRegOrd  = self.order
+
+    def plotExpReg(self):
+        self.clearLines()
+
+        self.plotWIdget.expReg()
+
+        self.showExpReg = 2
 
     ##Calculations##
     def showPmcc(self):
@@ -198,6 +212,14 @@ class main(QWidget):
 
         self.layout().itemAtPosition(1,1).widget().deleteLater()
         self.layout().addWidget(self.plotWidget, 1, 1)
+
+        try:
+            self.raiseWidget(self.polyRegLabel)
+            self.raiseWidget(self.pmccLabel)
+            self.raiseWidget(self.srccLabel)
+        except:
+            pass
+        
 
 app = QApplication(sys.argv)
 

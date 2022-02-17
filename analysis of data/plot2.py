@@ -2,11 +2,12 @@ from PyQt5.QtCore    import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui     import *
 
-import sys
-
 import pyqtgraph as pg
-import numpy     as np
 
+import sys
+from math import log
+
+import numpy as np
 from scipy.interpolate import interp1d
 
 class plot(QWidget):
@@ -38,7 +39,7 @@ class plot(QWidget):
             if self.data[0][i] == min(self.data[0]):
                 self.minXTextList.append(pg.TextItem("Min X = (" + str(self.data[0][i]) + ", " + str(self.data[1][i]) + ")", anchor=(1,1)))
         
-        self.plot = pg.plot()
+        self.plot = pg.PlotWidget()
 
         self.layout().addWidget(self.plot)
             
@@ -61,12 +62,12 @@ class plot(QWidget):
         x2 = sum([self.data[0][i]**2 for i in range(len(self.data[0]))])
 
         #Gradient and y-intercept
-        m = (n*xy - x*y)/(n*x2 - x**2)
-        c = (y - m*x)/n
+        self.m = (n*xy - x*y)/(n*x2 - x**2)
+        self.c = (y - self.m*x)/n
 
         #Using x values to plot y values using new function
         xVals = self.data[0]
-        yVals = [m*self.data[0][i] + c for i in range(len(self.data[0]))]
+        yVals = [self.m*self.data[0][i] + self.c for i in range(len(self.data[0]))]
 
         #Create line plot item
         self.line = pg.PlotDataItem(xVals, yVals, connect="all")
@@ -242,7 +243,11 @@ class plot(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    p = plot(None, [20,13,10,8,7,7,5,5,4,3, 1, 1, 25])
-             #[[1, 2, 3, 4,5,6,7,8,9,10,11,12,13],
-              #      [20,13,10,8,7,7,5,5,4,3, 1, 1, 25]])
+    data = [[1, 2, 3, 4,5,6,7,8,9,10,11,12,13],
+            [20,13,10,8,7,7,5,5,4,3, 1, 1, 25]]
+    data = [[0.001, 0.01, 0.03, 0.05, 0.07, 0.09, 0.11, 0.13, 0.15, 0.17, 0.19, 0.21],
+            [1, 1.03, 1.06, 1.38, 2.09, 3.54, 6.41, 12.6, 22.1, 39.05, 65.32, 99.78]]
+        
+    p = plot(None, data)
+    p.expReg()
     app.exec_()
