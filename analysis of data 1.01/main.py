@@ -78,22 +78,22 @@ class main(QWidget):
                 self.data[0].append(i)
                 self.data[1].append(temp[i])
 
-    def showPolRegEq(self):
-        polyRegStr = self.plotWidget.roundedPolyStr
+    def showRegEq(self):
+        regStr = self.plotWidget.roundedRegStr
 
-        polyRegStr = polyRegStr.replace("**", "<sup>")
-        polyRegStr = polyRegStr.replace("+", "</sup>+")
-        polyRegStr = polyRegStr.replace("+-", "-")
-        polyRegStr = polyRegStr.replace("*", "")
-        polyRegStr = polyRegStr.replace("+", " + ")
-        polyRegStr = polyRegStr.replace("-", " - ")
-        polyRegStr = polyRegStr.replace("x<sup>0</sup>", "")
-        polyRegStr = polyRegStr.replace("x<sup>1</sup>", "x")
+        regStr = regStr.replace("**", "<sup>")
+        regStr = regStr.replace("+", "</sup>+")
+        regStr = regStr.replace("+-", "-")
+        regStr = regStr.replace("*", "")
+        regStr = regStr.replace("+", " + ")
+        regStr = regStr.replace("-", " - ")
+        regStr = regStr.replace("x<sup>0</sup>", "")
+        regStr = regStr.replace("x<sup>1</sup>", "x")
         
-        self.polyRegLabel = draggablePlotLabel(self, text=polyRegStr)
+        self.regLabel = draggablePlotLabel(self, text=regStr)
         
-        self.polyRegLabel.setAlignment(Qt.AlignCenter)
-        self.polyRegLabel.show()
+        self.regLabel.setAlignment(Qt.AlignCenter)
+        self.regLabel.show()
 
         self.eq = 2
 
@@ -122,13 +122,15 @@ class main(QWidget):
         try:    self.plotWidget.plot.removeItem(self.plotWidget.curve)
         except: pass
 
-        try:    self.polyRegLabel.deleteLater()
+        try:    self.regLabel.deleteLater()
         except: pass
 
     def plotLinReg(self):
         self.clearLines()
         
         self.plotWidget.linReg()
+
+        self.showRegEq()
 
         self.showLinReg = 2
 
@@ -142,7 +144,7 @@ class main(QWidget):
         
         self.plotWidget.polReg(self.order)
 
-        self.showPolRegEq()
+        self.showRegEq()
 
         self.showPolReg = 2
         self.polRegOrd  = self.order
@@ -213,7 +215,7 @@ class main(QWidget):
         self.layout().addWidget(self.plotWidget, 1, 1)
 
         try:
-            self.raiseWidget(self.polyRegLabel)
+            self.raiseWidget(self.regLabel)
             self.raiseWidget(self.pmccLabel)
             self.raiseWidget(self.srccLabel)
         except:

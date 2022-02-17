@@ -21,18 +21,21 @@ class plotLabel(QLabel):
 
         self.setFixedWidth(self.fontMetrics().boundingRect(text).width()+10)
 
+#parentVar parameter will be changed in later update
+#Future update will initialise one label for each time it's needed, (pmccLabel, srccLabel, etc.), and hide/show it when needed
 class draggablePlotLabel(plotLabel):
-    def __init__(self, parent=None, text=""):
+    def __init__(self, parent=None, text="", pos=QPoint(100, 100)):
         plotLabel.__init__(self, parent, text=text)
+
+        self.move(pos)
 
         self.setMouseTracking(False)
 
     def mouseMoveEvent(self, event):
-        self.move(self.mapToGlobal(QPoint(event.x() - self.geometry().width()//2,
-                                          event.y() - self.geometry().height()//2)))
-
-##    def mouseDoubleClickEvent(self, event):
-##        self.deleteLater()
+        posPoint = QPoint(event.x() - self.geometry().width()//2,
+                          event.y() - self.geometry().height()//2)
+        
+        self.move(self.mapToGlobal(posPoint))
 
 class plotButton(QPushButton):
     def __init__(self, parent=None, text=""):

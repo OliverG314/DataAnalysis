@@ -70,6 +70,10 @@ class plot(QWidget):
         #Create line plot item
         self.line = pg.PlotDataItem(xVals, yVals, connect="all")
 
+        self.roundedRegStr = str(round(self.c, 4)) + str(round(self.m, 4)) + "x**1+"
+
+        print(self.roundedRegStr)
+
         #Add line to main plot
         self.plot.addItem(self.line)
 
@@ -78,10 +82,10 @@ class plot(QWidget):
         y = self.data[1]
         
         #String that stores polynomial
-        polyStr = ""
+        regStr = ""
 
         #String that stores rounded polynomial
-        roundedPolyStr = ""
+        roundedRegStr = ""
 
         #Detail of interpolation
         interpXScale = 100
@@ -117,23 +121,23 @@ class plot(QWidget):
         for i in items:
             
             #Multiply coefficients by increasing powers of x
-            polyStr += str(i) + "*x**" + str(items.index(i)) + "+"
+            regStr += str(i) + "*x**" + str(items.index(i)) + "+"
 
             #Do the same but round them for displaying
-            roundedPolyStr += str(round(i, 4)) + "*x**" + str(items.index(i)) + "+"
+            roundedRegStr += str(round(i, 4)) + "*x**" + str(items.index(i)) + "+"
 
         #Remove the last "+"
-        self.polyStr = polyStr[:-1]
+        self.regStr = regStr[:-1]
 
         #Remove the last "+"
-        self.roundedPolyStr = roundedPolyStr[:-1]
+        self.roundedRegStr = roundedRegStr[:-1]
 
         xVals = list(np.linspace(min(x), max(x), len(y)))
         yVals = []
 
         #Substitute x values into polynomial string and evaluate its value
         for i in xVals:
-            yVals.append(eval(self.polyStr.replace("x", str(i))))
+            yVals.append(eval(self.regStr.replace("x", str(i))))
 
         #Create interpolation function for data
         func = interp1d(x=xVals, y=yVals, kind=2, fill_value = "extrapolate")
