@@ -39,7 +39,7 @@ class plot(QWidget):
             if self.data[0][i] == min(self.data[0]):
                 self.minXTextList.append(pg.TextItem("Min X = (" + str(self.data[0][i]) + ", " + str(self.data[1][i]) + ")", anchor=(1,1)))
         
-        self.plot = pg.PlotWidget()
+        self.plot = pg.plot()
 
         self.layout().addWidget(self.plot)
             
