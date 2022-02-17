@@ -1,0 +1,7 @@
+1.0.0
+
+- Fixed labels going to background when extrapolating
+
+1.0.1
+
+- Fixed window appearing when extrapolating
