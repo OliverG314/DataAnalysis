@@ -1,5 +1,5 @@
 Known bugs:
 
-- Exponential extrapolation still not perfect [FIXED][0.1.3]
+- Exponential extrapolation still not perfect [FIXED - 0.1.2]
 - Equation label resetting position when regression menu opened
-- Extrapolating when annotations are shown removes annotations
+- Extrapolating when annotations are shown removes annotations [FIXED - 0.2.1]
