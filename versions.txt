@@ -23,3 +23,8 @@
 
 - Added plotting of mean value
 - Fixed bug in regressions menu where wrong checkbox states were saved. I think I created this one in this update lol
+
+0.2.1
+
+- Added label by mean point
+- Fixed bug where annotations got deleted when extrapolating
