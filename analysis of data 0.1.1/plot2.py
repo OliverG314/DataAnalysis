@@ -46,7 +46,6 @@ class plot(QWidget):
         self.scatterPlot()
 
     def linReg(self):
-        print(1)
         #Number of data points
         n = len(self.data[0])
 
@@ -164,8 +163,10 @@ class plot(QWidget):
 
         self.plotCurve(self.regStr, x, y)
 
-    def plotCurve(self, eq, x, y, interpXScale = 100):
-        xVals = list(np.linspace(min(x), max(x), len(y)))
+    def plotCurve(self, eq, x, y, interpXScale = 100, exp=0):
+        if exp:     xVals = list(np.linspace(self.minExtrapVal, self.maxExtrapVal, self.maxExtrapVal-self.minExtrapVal))
+        if not exp: xVals = list(np.linspace(min(x), max(x), len(x)))
+        
         yVals = []
 
         #Substitute x values into polynomial string and evaluate its value

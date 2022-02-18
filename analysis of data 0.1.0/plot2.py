@@ -46,6 +46,7 @@ class plot(QWidget):
         self.scatterPlot()
 
     def linReg(self):
+        print(1)
         #Number of data points
         n = len(self.data[0])
 
@@ -163,16 +164,28 @@ class plot(QWidget):
 
         self.plotCurve(self.regStr, x, y)
 
-    def plotCurve(self, eq, x, y, interpXScale = 100, exp=0):
-        xVals = list(np.linspace(self.minExtrapVal, self.maxExtrapVal, 2000))
+    def plotCurve(self, eq, x, y, interpXScale = 100):
+        xVals = list(np.linspace(min(x), max(x), len(y)))
         yVals = []
 
         #Substitute x values into polynomial string and evaluate its value
         for i in xVals:
-            yVals.append(eval(eq.replace("x", "(" + str(i) + ")")))
+            yVals.append(eval(eq.replace("x", str(i))))
+
+        #Create interpolation function for data
+        func = interp1d(x=xVals, y=yVals, kind=2, fill_value = "extrapolate")
+
+        interpXVals = []
+        interpYVals = []
+
+        #Set x values to be closer together
+        interpXVals = list(np.linspace(self.minExtrapVal, self.maxExtrapVal, len(y)*interpXScale))
+
+        #Interpolate y values across new x values
+        interpYVals = func(interpXVals)
 
         #Create curve
-        self.curve = pg.PlotDataItem(xVals, yVals, connect="all")
+        self.curve = pg.PlotDataItem(interpXVals, interpYVals, connect="all")
 
         #Add curve to main plot
         self.plot.addItem(self.curve)

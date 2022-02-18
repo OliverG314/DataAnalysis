@@ -12,6 +12,7 @@ from plotMenu        import *
 from annMenu         import *
 from extrapMenu      import *
 from calculations    import *
+from dataInputWidget import *
 
 import numpy as np
 
@@ -217,10 +218,9 @@ class main(QWidget):
         self.plotWidget = plot(self, self.data)
 
         self.plotWidget.minExtrapVal = self.minExtrapVal
-        self.plotWidget.maxExtrapVal = self.maxExtrapVal 
+        self.plotWidget.maxExtrapVal = self.maxExtrapVal
 
-        if self.showExpReg == 2: self.plotWidget.plotCurve(self.regStr, self.data[0], self.data[1], exp=1)
-        else:self.plotWidget.plotCurve(self.regStr, self.data[0], self.data[1], exp=0)
+        self.plotWidget.plotCurve(self.regStr, self.data[0], self.data[1])
 
         self.layout().itemAtPosition(1,1).widget().deleteLater()
         self.layout().addWidget(self.plotWidget, 1, 1)
@@ -235,8 +235,8 @@ class main(QWidget):
 
 app = QApplication(sys.argv)
 
-data = [[1, 2, 3,  4,  5],
-        [2, 7, 20, 54, 148]]
+data = [[10, 20, 30, 50, 100],
+        [88, 232, 409, 837, 2208]]
 
 ##data = [1,5,6,2,3,2,8,7,6,9,4,6,3]
 

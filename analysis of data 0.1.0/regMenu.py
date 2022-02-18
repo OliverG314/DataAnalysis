@@ -53,7 +53,8 @@ class regMenu(menuWidget):
         for i in [titleLabel, polRegWidget, linRegWidget, expRegWidget]: self.layout().addWidget(i)
 
     def setCheckBox(self, state):
-        if state == Qt.Checked:            
+        if state == Qt.Checked:
+            
             if self.sender() == self.linRegCheckBox:
                 self.linRegCheckBox.setCheckState(2)
                 self.polRegCheckBox.setCheckState(0)
