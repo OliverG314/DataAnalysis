@@ -1,0 +1,4 @@
+Known bugs:
+
+- Exponential extrapolation still not perfect
+- Equation label resetting position when regression menu opened
