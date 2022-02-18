@@ -5,3 +5,7 @@
 1.0.1
 
 - Fixed window appearing when extrapolating
+
+1.1.1
+
+- Added exponential regression
