@@ -1,20 +1,25 @@
-1.0.0
+0.0.0
 
 - Fixed labels going to background when extrapolating
 
-1.0.1
+0.0.1
 
 - Fixed window appearing when extrapolating
 
-1.1.1
+0.1.0
 
 - Added exponential regression
 
-1.1.2
+0.1.1
 
 - Fixed bugs involving exponential extrapolation
 - Jammiest bug fix in all of Europe tho
 
-1.1.3
+0.1.3
 
 -Fixed extrapolation once and for all
+
+0.2.0
+
+- Added plotting of mean value
+- Fixed bug in regressions menu where wrong checkbox states were saved. I think I created this one in this update lol
