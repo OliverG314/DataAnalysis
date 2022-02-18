@@ -9,3 +9,8 @@
 1.1.1
 
 - Added exponential regression
+
+1.1.2
+
+- Fixed bugs involving exponential extrapolation
+- Jammiest bug fix in all of Europe tho
