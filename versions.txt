@@ -14,3 +14,7 @@
 
 - Fixed bugs involving exponential extrapolation
 - Jammiest bug fix in all of Europe tho
+
+1.1.3
+
+-Fixed extrapolation once and for all
