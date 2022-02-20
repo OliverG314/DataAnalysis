@@ -3,3 +3,5 @@ Known bugs:
 - Exponential extrapolation still not perfect [FIXED - 0.1.2]
 - Equation label resetting position when regression menu opened
 - Extrapolating when annotations are shown removes annotations [FIXED - 0.2.1]
+- Exponential regression only work for data that fits e^x, not e^-x, (-e)^x, or (-e)^-x
+- Polynomial regression goes kinda funky after exponentially regressing
