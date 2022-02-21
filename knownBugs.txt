@@ -5,3 +5,4 @@ Known bugs:
 - Extrapolating when annotations are shown removes annotations [FIXED - 0.2.1]
 - Exponential regression only work for data that fits e^x, not e^-x, (-e)^x, or (-e)^-x
 - Polynomial regression goes kinda funky after exponentially regressing
+- When entering new data, label positions aren't saved
