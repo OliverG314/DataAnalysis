@@ -28,3 +28,12 @@
 
 - Added label by mean point
 - Fixed bug where annotations got deleted when extrapolating
+
+0.2.2 [UNRELEASED]
+
+- Was meant to fix bug where exponential regressions only worked for e^x, not e^-x, (-e)^x, or (-e)^-x
+
+0.3.0
+
+- Added user input of data
+- Fixed some exponential regression bugs, but not all of them
