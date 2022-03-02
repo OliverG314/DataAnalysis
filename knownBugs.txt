@@ -8,3 +8,4 @@ Known bugs:
 - When entering new data, label positions aren't saved
 - Exponential regression is plain broke. Works a bit better in 0.3.0 but can fit more data in 0.4.0 (sort of)
 - Extrapolating without a plot throws an error
+- If you go between regressions in a wombo combo then life itself appears to collapse
