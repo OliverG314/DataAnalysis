@@ -42,3 +42,8 @@
 
 - Added linear regression of y on x, as well as x on y
 - Pretty sure I made exponential regressions buggier
+
+0.4.1
+
+- Code optimisations
+- Mass commenting
