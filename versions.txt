@@ -37,3 +37,7 @@
 
 - Added user input of data
 - Fixed some exponential regression bugs, but not all of them
+
+0.4.0
+
+- Added linear regression of y on x, as well as x on y
