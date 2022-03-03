@@ -47,3 +47,12 @@
 
 - Code optimisations
 - Mass commenting
+
+0.4.2
+
+- Can now plot floats
+- Change 1 int to float and called it an update lol
+
+0.4.3
+
+- Fixed extrapolation yet again
