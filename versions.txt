@@ -51,8 +51,12 @@
 0.4.2
 
 - Can now plot floats
-- Change 1 int to float and called it an update lol
+- Change an int to float
+- Called it an update
+- Gamer
 
 0.4.3
 
 - Fixed extrapolation yet again
+- Can't extrapolate unless plot exists
+- Made bounds of extrapolation more flexible - as flexible as possible - literally can't be more flexible
